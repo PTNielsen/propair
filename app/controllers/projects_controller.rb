@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    authorize! :create, @project
   end
 
   def edit
@@ -29,6 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    authorize! :update, @project
   end
 
   def destroy

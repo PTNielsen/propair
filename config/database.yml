@@ -12,15 +12,15 @@ default: &default
 
 development:
   <<: *default
-  database: propair_dev
+  database: propairV2_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: propair_test
+  database: propairV2_test
 
 production:
   <<: *default
-  database: propair_prod
+  database: propairV2_prod

@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project = Project.new(create_project_params)
     authorize! :create, @project
   end
 
@@ -30,7 +31,10 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project = Project.find params[:id]
     authorize! :update, @project
+
+    @project.update(edit_project_params)
   end
 
   def destroy
@@ -43,7 +47,7 @@ class ProjectsController < ApplicationController
 private
 
   def create_project_params
-    params.require(:project).permit(:author_id, :title, :description, :required_skill_1, :remote, :availability, :deadline, :active, :in_progress)
+    params.require(:project).permit(:author_id, :title, :description, :required_skill_1, :required_skill_2, :required_skill_3, :remote, :availability, :deadline, :active, :in_progress)
   end
 
   def edit_project_params

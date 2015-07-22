@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :email, :password, :user_name, :first_name, :last_name, :admin
+  # include Tokenable
+
+  validates_presence_of :email, :password, :user_name, :first_name, :last_name
   validates_uniqueness_of :email, :user_name
   
   has_many :projects, class_name: "Project", foreign_key: :author_id

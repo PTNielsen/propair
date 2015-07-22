@@ -13,7 +13,6 @@ gem 'json'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'tilt'
 gem 'erubis'
-gem 'httparty'
 
 gem 'pg'
 
@@ -31,7 +30,6 @@ gem 'figaro'
 
 gem 'fog'
 gem 'carrierwave'
-gem 'geokit-rails'
 
 group :development, :test do
   gem 'bullet'

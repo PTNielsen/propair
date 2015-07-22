@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users do
-    resources :projects
-    resources :feedbacks
-    resources :partnerships
-  end
-
+  resources :users
   resources :projects
 
   resource :dashboard, only: [:show]
 
-  root to: "home#index"
+  root to: "dashboards#show"
 end

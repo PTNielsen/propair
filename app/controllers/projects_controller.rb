@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :create]
 
-  skip_authorization_check only: [:index, :show]
+  skip_authorization_check only: [:index, :show, :create]
   
   before_action do
     request.format = :json
@@ -23,18 +23,30 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(create_project_params)
     authorize! :create, @project
+
+    if @project.save
+      redirect_to project_path(@project)
+      flash[:notice] = "Project was successfully created."
+    else
+      redirect_to :back
+      flash[:notice] = "An error occured creating your project."
+    end
   end
 
   def edit
     @project = Project.find params[:id]
-    authorize! :update, @project
+    # authorize! :update, @project
   end
 
   def update
     @project = Project.find params[:id]
-    authorize! :update, @project
+    # authorize! :update, @project
 
     @project.update(edit_project_params)
+    if @project.save
+      redirect_to project_path(@project)
+      flash[:notice] = "Project was successfully updated."
+    end
   end
 
   def destroy
@@ -42,6 +54,7 @@ class ProjectsController < ApplicationController
     authorize! :destroy, @project
 
     @project.delete
+    redirect_to "/", notice: "Project deleted"
   end
 
 private

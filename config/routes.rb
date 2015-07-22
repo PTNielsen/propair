@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources :partnerships
   end
 
+  resources :projects
+
   resource :dashboard, only: [:show]
 
   root to: "home#index"
-
-  # get  "/dashboard" => "dashboard#show", as: :dashboard
 end

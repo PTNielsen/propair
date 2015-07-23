@@ -18,4 +18,7 @@ class FeedbacksController < ApplicationController
 
 private
 
+  def create_feedback_params
+  end
+
 end

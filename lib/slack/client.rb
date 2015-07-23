@@ -1,12 +1,11 @@
-require "httparty"
+require 'net/http'
 
 module Slack
   class Client
     RequestFailed = Class.new(StandardError)
     InviteFailed = Class.new(StandardError)
 
-    def initialize(subdomain:, token:)
-      @subdomain = subdomain
+    def initialize token
       @token = token
     end
 

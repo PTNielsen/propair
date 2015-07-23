@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
 
   root to: "dashboards#show"
+
+  post "/projects/:id/slack" => "projects#slack",  as: :slack
 end

@@ -12,15 +12,11 @@ class Invitation
   end
 
   def perform
-    slack_client.invite \
-      email:    email,
-      channels: ENV["SLACK_CHANNELS"].to_s.split(/\s*,\s*/)
+    slack_client.invite email: email
   end
 
   private
   def slack_client
-    @slack_client ||= Slack::Client.new \
-      subdomain: ENV.fetch("SLACK_SUBDOMAIN"),
-      token:     ENV.fetch("SLACK_TOKEN")
+    @slack_client ||= Slack::Client.new ENV.fetch("propair_owner_token")
   end
 end

@@ -53,6 +53,12 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
+  def slack user1, user2, project
+    slack = SlackApi.new
+    slack.invite user1, user2, project
+    head :ok
+  end
+
 private
 
   def create_project_params

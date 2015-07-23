@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:slack]
 
-  # include Tokenable
-
   validates_presence_of :email, :password, :user_name, :first_name, :last_name
   validates_uniqueness_of :email, :user_name
   

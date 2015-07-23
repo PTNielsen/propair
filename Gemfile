@@ -13,6 +13,7 @@ gem 'json'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'tilt'
 gem 'erubis'
+gem 'httparty'
 
 gem 'pg'
 
@@ -26,10 +27,9 @@ gem 'sidetiq'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-slack'
 gem 'figaro'
-
-gem 'fog'
-gem 'carrierwave'
+gem 'virtus'
 
 group :development, :test do
   gem 'bullet'

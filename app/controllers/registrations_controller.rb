@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     user = User.create!(create_user_params)
+    #send slack invite email
     redirect_to user
   end
 

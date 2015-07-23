@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     @user.delete
   end
 
+  def invite email
+    Invitation.new email
+  end
+
 private
 
   def edit_user_params

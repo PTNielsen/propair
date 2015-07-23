@@ -4,19 +4,16 @@ class FeedbacksController < ApplicationController
     request.format = :json
   end
 
-  def index
-  end
-
-  def show
-  end
-
   def new
+    @feedback = Feedback.new
   end
 
   def create
   end
 
   def destroy
+    @feedback = Feedback.find params[:id]
+    @feedback.delete
   end
 
 private

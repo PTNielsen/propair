@@ -17,15 +17,15 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    authorize! :create, @project
+    # authorize! :create, @project
   end
 
   def create
-    @project = Project.new(create_project_params)
-    authorize! :create, @project
+    @project = current_user.projects.create!(create_project_params)
+    # authorize! :create, @project
 
     if @project.save
-      redirect_to project_path(@project)
+      render :show
       flash[:notice] = "Project was successfully created."
     else
       redirect_to :back
@@ -44,14 +44,14 @@ class ProjectsController < ApplicationController
 
     @project.update(edit_project_params)
     if @project.save
-      redirect_to project_path(@project)
+      render :show
       flash[:notice] = "Project was successfully updated."
     end
   end
 
   def destroy
     @project = Project.find params[:id]
-    authorize! :destroy, @project
+    # authorize! :destroy, @project
 
     @project.delete
     redirect_to "/", notice: "Project deleted"
@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
 private
 
   def create_project_params
-    params.require(:project).permit(:author_id, :title, :description, :required_skill_1, :required_skill_2, :required_skill_3, :remote, :availability, :deadline, :active, :in_progress)
+    params.require(:project).permit(:title, :description, :required_skill_1, :required_skill_2, :required_skill_3, :remote, :availability, :deadline, :active, :in_progress)
   end
 
   def edit_project_params

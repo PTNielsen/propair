@@ -4,9 +4,6 @@ class ConnectionsController < ApplicationController
     request.format = :json
   end
 
-  def index
-  end
-
   def show
   end
 

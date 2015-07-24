@@ -20,14 +20,14 @@ class PartnershipsController < ApplicationController
     @project.update(in_progress: true)
     
     if @partnership.save
-      redirect_to project_path(@project)
       flash[:notice] = "Flash message stuff"
+      head :ok
     end
   end
 
-  # def confirm
-  #   confirm partnership requestv 
-  # end
+  def confirm
+  #   confirm partnership request
+  end
 
 private
 

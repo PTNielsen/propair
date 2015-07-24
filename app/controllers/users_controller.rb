@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :invite]
 
-  skip_authorization_check only: [:index, :show]
+  skip_authorization_check only: [:index, :show, :invite]
   
   before_action do
     request.format = :json
@@ -32,8 +32,10 @@ class UsersController < ApplicationController
     @user.delete
   end
 
-  def invite email
-    Invitation.new email
+  def invite
+    a = Invitation.new email: params[:email]
+    a.perform
+    head :ok
   end
 
 private

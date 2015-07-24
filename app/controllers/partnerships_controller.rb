@@ -25,6 +25,10 @@ class PartnershipsController < ApplicationController
     end
   end
 
+  # def confirm
+  #   confirm partnership requestv 
+  # end
+
 private
 
   def create_partnership_params

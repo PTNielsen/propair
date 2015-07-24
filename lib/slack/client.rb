@@ -1,4 +1,5 @@
 require 'net/http'
+require 'httparty'
 
 module Slack
   class Client

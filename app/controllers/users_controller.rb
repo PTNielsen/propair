@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
+  # skip_before_action :authenticate_user!, only: [:index, :show, :invite]
 
-  skip_before_action :authenticate_user!, only: [:index, :show, :invite]
-
-  skip_authorization_check only: [:index, :show, :invite]
+  # skip_authorization_check only: [:index, :show, :invite]
   
   before_action do
     request.format = :json
@@ -34,9 +33,16 @@ class UsersController < ApplicationController
 
   def invite
     a = Invitation.new email: params[:email]
+    # InvitationMailer.invite(bought_item, current_user).deliver_later
     a.perform
     head :ok
   end
+
+  # def partner
+  #   InvitationMailer.partnership_request(project, current_user).deliver_later
+  #   # SlackApi.new to create group and invite both users
+  #   head: ok
+  # end
 
 private
 

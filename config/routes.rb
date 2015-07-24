@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   post "/projects/:id/slack" => "projects#slack",  as: :slack
 
   post "/users/invite" => "users#invite", as: :invite
+
+  # authenticate :user do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 end

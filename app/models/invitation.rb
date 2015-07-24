@@ -16,7 +16,9 @@ class Invitation
   end
 
   private
+
   def slack_client
     @slack_client ||= Slack::Client.new ENV.fetch("propair_owner_token")
   end
+  
 end

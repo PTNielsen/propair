@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
+  # skip_before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
 
-  skip_authorization_check only: [:index, :show, :create, :destroy]
+  # skip_authorization_check only: [:index, :show, :create, :destroy]
   
   before_action do
     request.format = :json
@@ -53,11 +53,17 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
-  def slack user1, user2, project
-    slack = SlackApi.new
-    slack.invite user1, user2, project
-    head :ok
-  end
+  # def slack user1, user2, project
+  #   slack = SlackApi.new
+  #   slack.invite user1, user2, project
+  #   head :ok
+  # end
+
+  # def partner
+  #   InvitationMailer.partnership_request(project, current_user).deliver_later
+  #   # SlackApi.new to create group and invite both users
+  #   head: ok
+  # end
 
 private
 

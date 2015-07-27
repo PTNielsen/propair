@@ -10,12 +10,7 @@ class AuthController < Devise::OmniauthCallbacksController
     sign_in user
 
     token = user.auth_tokens.create!
-
-    if current_user
-      # render :json => {auth_data:auth_data}
-      redirect_to "http://localhost:3000#dashboard/#{token.key}"
-    else
-      raise 'error'
-    end
+    # render :json => {auth_data:auth_data}
+    redirect_to "http://localhost:3000#dashboard/#{token.key}"
   end
 end

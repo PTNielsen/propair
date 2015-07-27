@@ -21,14 +21,18 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.create!(create_project_params)
+    if current_user
+      @project = current_user.projects.create!(create_project_params)
 
-    if @project.save
-      render :show
-      flash[:notice] = "Project was successfully created."
+      if @project.save
+        render :show
+        flash[:notice] = "Project was successfully created."
+      else
+        redirect_to :back
+        flash[:notice] = "An error occured creating your project."
+      end
     else
-      redirect_to :back
-      flash[:notice] = "An error occured creating your project."
+      raise 'error'
     end
   end
 

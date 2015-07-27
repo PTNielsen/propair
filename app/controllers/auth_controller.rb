@@ -1,6 +1,7 @@
 class AuthController < Devise::OmniauthCallbacksController
   def slack
     auth_data = request.env["omniauth.auth"]
+    binding.pry
     user = User.where(:email => auth_data.info.email).create_with(
       :user_name => auth_data.info.nickname,
       :admin => auth_data.info.is_admin,

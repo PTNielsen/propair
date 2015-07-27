@@ -2,15 +2,15 @@ module Devise
   module Strategies
     class AuthWithTokenFromHeader < Base
       def valid?
-        request.headers["Authorization"].present?
+        request.headers["Authorization"] =~ /bearer (.*)/ && @key = $1
       end
 
       def authenticate!
-        if request.headers["Authorization"]
-          user = User.find_by_email(request.headers["Authorization"])
-          success! user
+        token = AuthToken.find_by_key @key
+        if token.try :active?
+          success! token.user
         else
-          fail! "User could not be found"
+          fail! "Invalid auth token"
         end
       end
     end

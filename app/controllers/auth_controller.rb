@@ -9,7 +9,7 @@ class AuthController < Devise::OmniauthCallbacksController
       ).first_or_create!
 
     # render :json => {auth_data:auth_data}
-    redirect_to "http://localhost:3000#email=#{user.email}"
+    redirect_to "http://localhost:3000#dashboard/email=#{user.email}"
   end
 
 end

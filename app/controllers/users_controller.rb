@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show, :invite]
+  skip_before_action :authenticate_user!, only: [:index, :show, :invite]
 
-  # skip_authorization_check only: [:index, :show, :invite]
+  skip_authorization_check only: [:index, :show, :invite]
   
   before_action do
     request.format = :json

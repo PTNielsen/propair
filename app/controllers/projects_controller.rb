@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
 
-  # skip_authorization_check only: [:index, :show, :create, :destroy]
+  skip_authorization_check only: [:index, :show, :create, :destroy]
   
   before_action do
     request.format = :json
@@ -21,18 +21,14 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    if current_user
-      @project = current_user.projects.create!(create_project_params)
+    @project = current_user.projects.create!(create_project_params)
 
-      if @project.save
-        render :show
-        flash[:notice] = "Project was successfully created."
-      else
-        redirect_to :back
-        flash[:notice] = "An error occured creating your project."
-      end
+    if @project.save
+      render :show
+      flash[:notice] = "Project was successfully created."
     else
-      raise 'error'
+      redirect_to :back
+      flash[:notice] = "An error occured creating your project."
     end
   end
 

@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 
   post "/projects/:id/confirm" => "projects#confirm", as: :confirm
 
+  # get '/sign_in' => 'pages#login', as: :sign_in
+  # devise_scope :user do
+  #   delete '/sign_out' => 'devise/sessions#destroy', as: :sign_out
+  # end
+
   # get '/auth/slack/callback', to: 'sessions#create'
 
   # authenticate :user do

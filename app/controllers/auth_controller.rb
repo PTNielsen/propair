@@ -1,5 +1,4 @@
 class AuthController < Devise::OmniauthCallbacksController
-
   def slack
     auth_data = request.env["omniauth.auth"]
     user = User.where(:email => auth_data.info.email).create_with(
@@ -11,5 +10,4 @@ class AuthController < Devise::OmniauthCallbacksController
     # render :json => {auth_data:auth_data}
     redirect_to "http://localhost:3000#dashboard/email=#{user.email}"
   end
-
 end

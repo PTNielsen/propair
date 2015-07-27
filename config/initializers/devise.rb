@@ -7,7 +7,7 @@ module Devise
 
       def authenticate!
         if request.headers["Authorization"] == "TOKEN"
-          similarly_hardcoded_user = User.find 5
+          similarly_hardcoded_user = User.find 1
           success! similarly_hardcoded_user
         else
           fail! "That wasn't the hardcoded token"

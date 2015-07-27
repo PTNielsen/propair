@@ -15,6 +15,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'tilt'
 gem 'erubis'
 gem 'httparty'
+gem 'tubesock'
+gem 'rollbar', '~> 1.2.7'
 
 gem 'pg'
 

@@ -53,17 +53,17 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
-  # def slack user1, user2, project
-  #   slack = SlackApi.new
-  #   slack.invite user1, user2, project
-  #   head :ok
-  # end
+  def slack user1, user2, project
+    slack = SlackApi.new
+    slack.invite user1, user2, project
+    head :ok
+  end
 
-  # def partner
-  #   InvitationMailer.partnership_request(project, current_user).deliver_later
-  #   # SlackApi.new to create group and invite both users
-  #   head: ok
-  # end
+  def partner
+    InvitationMailer.partnership_request(project, current_user).deliver_later
+    # SlackApi.new to create group and invite both users
+    head: ok
+  end
 
 private
 

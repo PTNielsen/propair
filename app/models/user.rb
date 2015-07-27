@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   
   has_many :partnerships
   has_many :connections
+  has_many :auth_tokens
 end

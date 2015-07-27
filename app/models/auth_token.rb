@@ -1,4 +1,4 @@
-class AuthToken < ApplicationController
+class AuthToken < ActiveRecord::Base
   belongs_to :user
 
   validates :key, presence: true, length: { in: 32..255 }, uniqueness: true
@@ -9,7 +9,7 @@ class AuthToken < ApplicationController
   def expire!
     update! expires_at: Time.now
   end
-
+  
   def expired?
     expires_at && expires_at < Time.now
   end
@@ -25,5 +25,4 @@ private
       self.key ||= SecureRandom.uuid
     end while self.class.exists?(key: key)
   end
-
 end

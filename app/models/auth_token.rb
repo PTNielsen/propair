@@ -1,4 +1,4 @@
-class AuthToken < ActiveRecord::Base
+class AuthToken < ApplicationController
   belongs_to :user
 
   validates :key, presence: true, length: { in: 32..255 }, uniqueness: true
@@ -25,5 +25,5 @@ private
       self.key ||= SecureRandom.uuid
     end while self.class.exists?(key: key)
   end
-  
+
 end

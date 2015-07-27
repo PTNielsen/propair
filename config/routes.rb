@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   post "/projects/:id/confirm" => "projects#confirm", as: :confirm
 
-  # get '/auth/slack/callback', to: 'sessions#create'
+  get '/auth/slack/callback', to: 'sessions#create'
 
   # authenticate :user do
   #   mount Sidekiq::Web => '/sidekiq'

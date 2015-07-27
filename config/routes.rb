@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   post "/users/invite" => "users#invite", as: :invite
 
+  post "/projects/:id/request" => "projects#request", as: :request
+
+  post "/projects/:id/confirm" => "projects#confirm", as: :confirm
+
   # authenticate :user do
   #   mount Sidekiq::Web => '/sidekiq'
   # end

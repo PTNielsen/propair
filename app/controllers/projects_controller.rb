@@ -59,10 +59,15 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
-  def partner
+  def request
     InvitationMailer.partnership_request(project, current_user).deliver_later
     # SlackApi.new to create group and invite both users
     head :ok
+  end
+
+  def confirm
+    
+    # Send confirmation to requestor, open slack chat in window, create partnership in table
   end
 
 private

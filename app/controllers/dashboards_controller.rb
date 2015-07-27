@@ -11,12 +11,8 @@ class DashboardsController < ApplicationController
     active_projects = Project.where(active: true)
     not_started = active_projects.where(in_progress: false)
 
-    if current_user
-      @user_projects = active_projects.where(author_id: current_user.id)
-      @other_projects = not_started.where.not(author_id: current_user.id)
-    else
-      raise "error"
-    end
+    @user_projects = active_projects.where(author_id: current_user.id)
+    @other_projects = not_started.where.not(author_id: current_user.id)
   end
 
 end

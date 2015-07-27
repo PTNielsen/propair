@@ -6,11 +6,11 @@ module Devise
       end
 
       def authenticate!
-        if request.headers["Authorization"] == "TOKEN"
-          similarly_hardcoded_user = User.find 3
-          success! similarly_hardcoded_user
+        if request.headers["Authorization"]
+          user = User.find_by_email(request.headers["Authorization"])
+          success! user
         else
-          fail! "That wasn't the hardcoded token"
+          fail! "User could not be found"
         end
       end
     end

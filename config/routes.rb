@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: "dashboards#show"
 
-  post "/projects/:id/slack" => "projects#slack",  as: :slack
+  post "/projects/:id/slack" => "projects#slack_message",  as: :slack_message
 
   post "/users/invite" => "users#invite", as: :invite
 

@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
-  def slack user1, user2, project
+  def slack_message user1, user2, project
     slack = SlackApi.new
     slack.invite user1, user2, project
     head :ok
@@ -66,7 +66,6 @@ class ProjectsController < ApplicationController
   # end
 
   # def confirm
-    
   #   # Send confirmation to requestor, open slack chat in window, create partnership in table
   # end
 

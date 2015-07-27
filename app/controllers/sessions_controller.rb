@@ -1,8 +1,4 @@
-class SessionsController < ApplicationController
-
-  before_action do
-    request.format = :json
-  end
+class SessionsController < ApplicationControllers
   
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)

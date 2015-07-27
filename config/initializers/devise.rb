@@ -8,7 +8,7 @@ module Devise
       def authenticate!
         token = AuthToken.find_by_key @key
         if token.try :active?
-          success! token.user
+          success! sign_in token.user
         else
           fail! "Invalid auth token"
         end

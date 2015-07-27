@@ -7,7 +7,9 @@ class AuthController < Devise::OmniauthCallbacksController
       :slack => auth_data.to_h
       ).first_or_create!
 
+    token = AuthToken.new
+    
     # render :json => {auth_data:auth_data}
-    redirect_to "http://localhost:3000#dashboard/email=#{user.email}"
+    redirect_to "http://localhost:3000#dashboard/#{token}"
   end
 end

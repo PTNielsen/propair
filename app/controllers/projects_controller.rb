@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = user.projects.create!(create_project_params)
+    @project = current_user.projects.create!(create_project_params)
 
     if @project.save
       render :show

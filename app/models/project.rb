@@ -10,10 +10,10 @@ class Project < ActiveRecord::Base
       self.requests.create!(requestor_id: current_user.id, project_id: self.id, author_id: self.author_id)
     end
 
-    def create_partnership project
-      request_data = Request.where(project_id: project.id)
-      partnership = Partnership.create!(author_id: project.author_id, partner_id: request_data.requestor_id, project_id: project.id)
-      project.update(in_progress: true)
+    def create_partnership
+      request_data = Request.where(project_id: self.id)
+      partnership = Partnership.create!(author_id: self.author_id, partner_id: request_data.requestor_id, project_id: self.id)
+      self.update(in_progress: true)
       
       if partnership.save
         flash[:notice] = "Partnership created"
@@ -21,8 +21,9 @@ class Project < ActiveRecord::Base
       end
     end
 
-    def open_chat project
-      partnership = Partnership.find_by_project_id(project.id)
+    def open_chat
+      partnership = Partnership.find_by_project_id(self.id)
+      project = Project.find(self.id)
       user1 = partnership.author_id
       user2 = partnership.partner_id
 

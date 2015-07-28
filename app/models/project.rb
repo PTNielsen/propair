@@ -7,26 +7,27 @@ class Project < ActiveRecord::Base
     Request.create!(requestor_id: current_user.id, project_id: project.id, author_id: project.author_id)
   end
 
-  def create_partnership
-    project = Project.find params[:id]
-    request = Request.where(project_id: project.id)
-    partnership = Partnership.create!(author_id: project.author_id, partner_id: request.requestor_id, project_id: project.id)
+  def create_partnership project
+    request_data = Request.where(project_id: project.id)
+    partnership = Partnership.create!(author_id: project.author_id, partner_id: request_data.requestor_id, project_id: project.id)
     project.update(in_progress: true)
     
     if partnership.save
-      flash[:notice] = "Flash message stuff"
+      flash[:notice] = "Partnership created"
       head :ok
     end
   end
 
-  def open_chat
-    project = Project.find params[:id]
+  def open_chat project
     partnership = Partnership.find_by_project_id(project.id)
     user1 = partnership.author_id
     user2 = partnership.partner_id
 
     chat = SlackApi.new
     chat.place_participants user1, user2, project
+  end
+
+  def message
   end
 
 end

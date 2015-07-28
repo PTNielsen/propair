@@ -62,9 +62,10 @@ class ProjectsController < ApplicationController
   end
 
   def confirm
-    create_partnership
+    project = Project.find params[:id]
+    create_partnership project
     #Send confirmation to requestor
-    open_chat
+    open_chat project
 
     head :ok
   end

@@ -5,9 +5,6 @@ class SlackApi
 
   propair_owner_token = ENV["propair_owner_token"]
 
-  ghaea_id = ENV["ghaea_id"]
-  patrick_id = ENV["patrick_id"]
-
   include HTTParty
   base_uri "https://slack.com/api"
 
@@ -15,25 +12,33 @@ class SlackApi
     @channel = Slack.post "/groups.create",
       body: {
         token: propair_owner_token,
-        name: "project.title"
+        name: "#{project.title}"
       }
   end
 
-  def invite user1, user2, project
-    create_group
+  def place_participants user1, user2, project
+    create_group project
     Slack.post "/groups.invite",
       body: {
         token: propair_owner_token,
-        channel: "@channel.body.name",
-        user: ghaea_id
+        channel: "#{@channel.body.name}",
+        user: user1.slack["uid"]
       }
     Slack.post "/groups.invite",
       body: {
         token: propair_owner_token,
-        channel: "@channel.body.name",
-        user: patrick_id
+        channel: "#{@channel.body.name}",
+        user: user2.slack["uid"]
       }
   end
+
+  # def post_message
+  # end
+
+  # def rtm_session
+  #   Slack.post "/rtm.start"#,
+  #     #stuff
+  # end
 
   # def screenhero
   #   Slack.post "/chat.command",

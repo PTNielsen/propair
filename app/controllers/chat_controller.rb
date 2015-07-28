@@ -1,7 +1,7 @@
 class ChatController < ApplicationController
   include Tubesock::Hijack
 
-  def chat
+  def message
     hijack do |tubesock|
       tubesock.onopen do
         tubesock.send_data "Hello, friend"

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   
   has_many :projects, class_name: "Project", foreign_key: :author_id
   has_many :feedbacks, class_name: "Feedback", foreign_key: :author_id
+  has_many :requests, class_name: "Request", foreign_key: :requestor_id  
   
   has_many :partnerships
   has_many :connections

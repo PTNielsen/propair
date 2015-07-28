@@ -55,6 +55,7 @@ class ProjectsController < ApplicationController
 
   def partner_request
     project = Project.find params[:id]
+    
     create_request project
     PartnershipMailer.partnership_request(project, current_user).deliver_later
     head :ok
@@ -62,7 +63,7 @@ class ProjectsController < ApplicationController
 
   def confirm
     create_partnership
-    Send confirmation to requestor
+    #Send confirmation to requestor
     open_chat
 
     head :ok

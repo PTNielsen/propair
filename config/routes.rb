@@ -10,11 +10,7 @@ Rails.application.routes.draw do
 
   root to: "dashboards#show"
 
-  post "/projects/:id/slack" => "projects#slack_message",  as: :slack_message
-
-  post "/users/invite" => "users#invite", as: :invite
-
-  post "/projects/:id/request" => "projects#request", as: :request
+  post "/projects/:id/request" => "projects#partner_request", as: :partner_request
 
   post "/projects/:id/confirm" => "projects#confirm", as: :confirm
 

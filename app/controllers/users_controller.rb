@@ -16,19 +16,21 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
+    user = User.find params[:id]
   end
 
   def update
-    @user = User.find params[:id]
+    user = User.find params[:id]
 
-    @user.update(edit_user_params)
+    user.update(edit_user_params)
+    head :ok
   end
 
   def destroy
-    @user = User.find params[:id]
+    user = User.find params[:id]
 
-    @user.destroy
+    user.destroy
+    head :ok
   end
 
   def invite
@@ -37,12 +39,6 @@ class UsersController < ApplicationController
     a.perform
     head :ok
   end
-
-  # def partner
-  #   InvitationMailer.partnership_request(project, current_user).deliver_later
-  #   # SlackApi.new to create group and invite both users
-  #   head: ok
-  # end
 
 private
 

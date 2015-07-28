@@ -16,14 +16,14 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
-    authorize! :create, @project
+    project = Project.new
+    authorize! :create, project
   end
 
   def create
-    @project = current_user.projects.create!(create_project_params)
-    authorize! :create, @project
-    if @project.save
+    project = current_user.projects.create!(create_project_params)
+    authorize! :create, project
+    if project.save
       render :show
       flash[:notice] = "Project was successfully created."
     else
@@ -33,23 +33,23 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find params[:id]
+    project = Project.find params[:id]
   end
 
   def update
-    @project = Project.find params[:id]
+    project = Project.find params[:id]
 
-    @project.update(edit_project_params)
-    if @project.save
+    project.update(edit_project_params)
+    if project.save
       render :show
       flash[:notice] = "Project was successfully updated."
     end
   end
 
   def destroy
-    @project = Project.find params[:id]
+    project = Project.find params[:id]
 
-    @project.delete
+    project.delete
     head :ok
   end
 

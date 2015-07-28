@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: "dashboards#show"
 
-  post "/projects/:id/request" => "projects#partner_request", as: :partner_request
+  post "/projects/request/:project_id" => "projects#partner_request", as: :partner_request
 
   post "/projects/:id/confirm" => "projects#confirm", as: :confirm
 

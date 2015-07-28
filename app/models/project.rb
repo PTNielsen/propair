@@ -3,6 +3,22 @@ class Project < ActiveRecord::Base
   
   belongs_to :author, class_name: "User"
 
+  def create_request project
+    Request.create!(requestor_id: current_user.id, project_id: project.id, author_id: project.author_id)
+  end
+
+  def create_partnership
+    project = Project.find params[:id]
+    request = Request.where(project_id: project.id)
+    partnership = Partnership.create!(author_id: project.author_id, partner_id: request.requestor_id, project_id: project.id)
+    project.update(in_progress: true)
+    
+    if partnership.save
+      flash[:notice] = "Flash message stuff"
+      head :ok
+    end
+  end
+
   def open_chat
     project = Project.find params[:id]
     partnership = Partnership.find_by_project_id(project.id)
@@ -12,19 +28,5 @@ class Project < ActiveRecord::Base
     chat = SlackApi.new
     chat.place_participants user1, user2, project
   end
-
-  # def create_partnership
-  #   @project = Project.find params[:id]
-  #   @partnership = Partnership.create!(create_partnership_params)
-  #   @project.update(in_progress: true)
-    
-  #   if @partnership.save
-  #     flash[:notice] = "Flash message stuff"
-  #     head :ok
-  #   end
-  # end
-
-  # def create_request
-  # end
 
 end

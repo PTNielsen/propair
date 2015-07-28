@@ -53,18 +53,20 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
-  # def request
-  #   PartnershipMailer.partnership_request(project, current_user).deliver_later
-  #   create_request
-  #   head :ok
-  # end
+  def request
+    project = Project.find params[:id]
+    create_request project
+    PartnershipMailer.partnership_request(project, current_user).deliver_later
+    head :ok
+  end
 
-  # def confirm
-  #   # create_partnership
-  #   # Send confirmation to requestor
-  #   # open_chat
-  #   head :ok
-  # end
+  def confirm
+    create_partnership
+    Send confirmation to requestor
+    open_chat
+
+    head :ok
+  end
 
 private
 

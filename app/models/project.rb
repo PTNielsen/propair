@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
     
     belongs_to :author, class_name: "User"
 
+    has_many :requests
+
     def create_request
       self.requests.create!(requestor_id: current_user.id, project_id: self.id, author_id: self.author_id)
     end

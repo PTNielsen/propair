@@ -28,6 +28,5 @@ class Project < ActiveRecord::Base
   end
 
   def message
-  end
 
 end

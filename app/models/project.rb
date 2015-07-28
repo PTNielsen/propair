@@ -1,7 +1,5 @@
 class Project < ActiveRecord::Base
 
-  module InitiatePartnership
-
     validates_presence_of :author_id, :title, :description
     
     belongs_to :author, class_name: "User"
@@ -32,7 +30,5 @@ class Project < ActiveRecord::Base
 
     def message
     end
-
-  end
 
 end

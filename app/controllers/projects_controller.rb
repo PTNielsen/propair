@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
   def partner_request
     project = Project.find params[:project_id]
     
-    project.create_request
+    project.create_request current_user
     PartnershipMailer.partnership_request(project, current_user).deliver_later
     head :ok
   end

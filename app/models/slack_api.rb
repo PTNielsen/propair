@@ -12,7 +12,17 @@ class SlackApi
     @channel = Slack.post "/groups.create",
       body: {
         token: propair_owner_token,
-        name: "#{project.title}"
+        name: "#{@project.title}"
+      }
+  end
+
+  def bot_message
+    Slack.post "/chat.postMessage",
+      body: {
+        token: propair_owner_token,
+        channel: "#{@channel.body.id}",
+        username: "ProPair",
+        text: "Welcome to ProPair!\nIf you'd like to pair remotely using Slack's Screenhero integration, please enter the following slash command to begin a screensharing session with your partner:\n ```/hero @(PARTNER_USERNAME)``` \nFor additional Screenhero slash commands, enter:\n ```/hero help``` /n **IMPORTANT NOTE:  Use of Slack's Screenhero integration requires an existing Screenhero account with the same email address as your Slack account.  To sign up for an account, please visit <https://screenhero.com/login/|Screenhero>**"
       }
   end
 
@@ -21,24 +31,17 @@ class SlackApi
     Slack.post "/groups.invite",
       body: {
         token: propair_owner_token,
-        channel: "#{@channel.body.name}",
+        channel: "#{@channel.body.id}",
         user: user1.slack["uid"]
       }
     Slack.post "/groups.invite",
       body: {
         token: propair_owner_token,
-        channel: "#{@channel.body.name}",
+        channel: "#{@channel.body.id}",
         user: user2.slack["uid"]
       }
+    bot_message
   end
-
-  # def post_message
-  # end
-
-  # def rtm_session
-  #   Slack.post "/rtm.start"#,
-  #     #stuff
-  # end
 
   # def screenhero
   #   Slack.post "/chat.command",

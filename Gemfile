@@ -26,7 +26,7 @@ gem 'pry-rails'
 gem 'sidekiq'
 gem 'sinatra', require: nil
 gem 'sidetiq'
-gem 'redis-rails'
+gem 'mandrill-api'
 
 gem 'cancancan', '~> 1.10'
 gem 'devise'

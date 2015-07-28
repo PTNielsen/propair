@@ -23,7 +23,7 @@ class SlackApi
         channel: "#{@channel.body.id}",
         username: "ProPair",
         icon_url: "http://media.moddb.com/images/members/1/214/213699/icon_stormtrooper.png",
-        text: "Welcome to ProPair!\nIf you'd like to pair remotely using Slack's Screenhero integration, please enter the following slash command to begin a screensharing session with your partner:\n ```/hero @(PARTNER_USERNAME)``` \nFor additional Screenhero slash commands, enter:\n ```/hero help``` /n **IMPORTANT NOTE:  Use of Slack's Screenhero integration requires an existing Screenhero account with the same email address as your Slack account.  To sign up for an account, please visit <https://screenhero.com/login/|Screenhero>**"
+        text: "Welcome to ProPair! If you'd like to pair remotely using Slack's Screenhero integration, please enter the following slash command to begin a screensharing session with your partner: ```/hero @(PARTNER_USERNAME)``` For additional Screenhero slash commands, enter: ```/hero help``` **IMPORTANT NOTE:  Use of Slack's Screenhero integration requires an existing Screenhero account with the same email address as your Slack account.  To sign up for an account, please visit <https://screenhero.com/login/|Screenhero>**"
       }
   end
 

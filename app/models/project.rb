@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
 
     has_many :requests
 
-    def create_request
+    def create_request current_user
       self.requests.create!(requestor_id: current_user.id, project_id: self.id, author_id: self.author_id)
     end
 

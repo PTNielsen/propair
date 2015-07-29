@@ -8,6 +8,7 @@ class ChatController < ApplicationController
 
     slack = SlackApi.new
     slack.post_message current_user, text, partnership
+    head :ok
   end
 
   def message

@@ -34,10 +34,12 @@ class ProjectsController < ApplicationController
 
   def edit
     project = Project.find params[:id]
+    authorize! :update, project
   end
 
   def update
     project = Project.find params[:id]
+    authorize! :update, project
 
     project.update(edit_project_params)
     if project.save
@@ -48,6 +50,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     project = Project.find params[:id]
+    authorize! :destroy, project
 
     project.delete
     head :ok

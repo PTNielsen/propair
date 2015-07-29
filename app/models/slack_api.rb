@@ -44,12 +44,13 @@ class SlackApi
     bot_message
   end
 
-  def post_message current_user
+  def post_message current_user, text, partnership
     Slack.post "/chat.postMessage",
       body: {
         token: "#{current_user.slack["credentials"]["token"]}",
-        channel: "",
-        text: "Text to be received from user"
+        channel: "#{partnership.slack_channel}",
+        text: text,
+        as_user: true
       }
   end
 

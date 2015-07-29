@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
-    @pair_request = Request.where(project_id: @project.id)
   end
 
   def new

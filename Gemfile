@@ -28,14 +28,14 @@ gem 'sidekiq'
 gem 'sinatra', require: nil
 gem 'sidetiq'
 gem 'mandrill-api'
-# gem 'slack-mail'
+gem 'virtus'
+gem 'slack-mail'
 
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-slack'
 gem 'figaro'
-gem 'virtus'
 
 group :development, :test do
   gem 'bullet'

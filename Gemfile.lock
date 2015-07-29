@@ -233,6 +233,11 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    slack-mail (0.0.4)
+      rails (~> 4.2)
+      slack-notifier
+      virtus
+    slack-notifier (1.2.1)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -315,6 +320,7 @@ DEPENDENCIES
   sidekiq
   sidetiq
   sinatra
+  slack-mail
   slim-rails
   spring
   tilt

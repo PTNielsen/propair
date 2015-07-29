@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  skip_authorization_check only: [:index, :show, :partner_request]
+  skip_authorization_check only: [:index, :show, :partner_request, :partnership_confirmation]
   
   before_action do
     request.format = :json
@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
+    @pair_request = Request.where(project_id: @project.id)
   end
 
   def new
@@ -64,6 +65,8 @@ class ProjectsController < ApplicationController
   def confirm
     project = Project.find params[:id]
     request = Request.find_by_project_id(project.id)
+    project.update!(partner_id: request.requestor_id)
+
     project.create_partnership
 
     project.open_chat

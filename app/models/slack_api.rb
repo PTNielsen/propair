@@ -56,7 +56,7 @@ class SlackApi
       }
   end
 
-  def chat_history
+  def chat_history partnership
     SlackApi.get "/groups.history",
     body: {
       token: propair_owner_token,
@@ -71,7 +71,7 @@ class SlackApi
         command: "/hero",
         text: "@#{parter_name}",
         token: propair_owner_token,
-        channel: "#{patnership.slack_channel}"
+        channel: "#{partnership.slack_channel}"
       }
   end
 

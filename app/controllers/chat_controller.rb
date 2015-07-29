@@ -5,7 +5,7 @@ class ChatController < ApplicationController
 
   def create
     project = Project.find params[:project_id]
-    partnership = Partnership.where(project_id: project.id)
+    partnership = Partnership.find(project.id)
     text = params[:text]
 
     slack = SlackApi.new
@@ -15,10 +15,10 @@ class ChatController < ApplicationController
 
   def history
     project = Project.find params[:project_id]
-    partnership = Partnership.where(project_id: project.id)
+    partnership = Partnership.find(project.id)
 
     slack = SlackApi.new
-    slack.chat_history
+    slack.chat_history partnership
   end
 
   def screenhero

@@ -17,6 +17,7 @@ gem 'erubis'
 gem 'httparty'
 gem 'tubesock'
 gem 'rollbar', '~> 1.2.7'
+gem 'slim-rails'
 
 gem 'pg'
 

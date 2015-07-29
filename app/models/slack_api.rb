@@ -9,7 +9,7 @@ class SlackApi
   base_uri "https://slack.com/api"
 
   def create_group project
-    @channel = SlackApi.post "/groups.create",
+    @channel = Slack.post "/groups.create",
       body: {
         token: propair_owner_token,
         name: "#{project.title}"

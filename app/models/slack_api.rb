@@ -9,7 +9,7 @@ class SlackApi
   base_uri "https://slack.com/api"
 
   def create_group project
-    @channel = Slack.post "/groups.create",
+    @channel = SlackApi.post "/groups.create",
       body: {
         token: propair_owner_token,
         name: "#{project.title}"
@@ -50,13 +50,21 @@ class SlackApi
     SlackApi.post "/chat.postMessage",
       body: {
         token: "#{current_user.slack["credentials"]["token"]}",
-        channel: "G08355R6U",
+        channel: "#{partnership.slack_channel}",
         text: text,
         as_user: true
       }
   end
 
-  #channel - #{partnership.slack_channel}
+  def chat_history
+    SlackApi.get "/groups.history",
+    body: {
+      token: propair_owner_token,
+      channel: "#{partnership.slack_channel}"
+    }
+  end
+
+  #channel - G08355R6U
 
   # def screenhero
   #   Slack.post "/chat.command",

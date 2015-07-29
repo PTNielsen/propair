@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get "/other_projects" => "projects#other_projects", as: :other_projects
 
+  get "/projects/:project_id/chat_history" => "chat#history", as: :chat_history
+
   # get '/sign_in' => 'pages#login', as: :sign_in
   # devise_scope :user do
   #   delete '/sign_out' => 'devise/sessions#destroy', as: :sign_out

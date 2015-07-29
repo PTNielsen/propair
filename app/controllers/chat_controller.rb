@@ -1,7 +1,7 @@
 class ChatController < ApplicationController
   include Tubesock::Hijack
 
-  skip_authorization_check only: [:create]
+  skip_authorization_check only: [:create, :history]
 
   def create
     project = Project.find params[:project_id]
@@ -11,6 +11,14 @@ class ChatController < ApplicationController
     slack = SlackApi.new
     slack.post_message current_user, text, partnership
     head :ok
+  end
+
+  def history
+    project = Project.find params[:project_id]
+    partnership = Partnership.where(project_id: project.id)
+
+    slack = SlackApi.new
+    slack.chat_history
   end
 
   def message

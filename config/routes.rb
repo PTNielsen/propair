@@ -27,8 +27,6 @@ Rails.application.routes.draw do
   #   delete '/sign_out' => 'devise/sessions#destroy', as: :sign_out
   # end
 
-  # get '/auth/slack/callback', to: 'sessions#create'
-
   # authenticate :user do
   #   mount Sidekiq::Web => '/sidekiq'
   # end

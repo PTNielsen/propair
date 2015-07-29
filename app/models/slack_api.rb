@@ -14,6 +14,8 @@ class SlackApi
         token: propair_owner_token,
         name: "#{project.title}"
       }
+    partnership = Partnership.where(project_id: project.id)
+    partnership.update(slack_channel: "#{@channel.body.id}")
   end
 
   def bot_message

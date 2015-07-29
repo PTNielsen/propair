@@ -1,6 +1,15 @@
 class ChatController < ApplicationController
   include Tubesock::Hijack
 
+  def create
+    project = Project.find params[:project_id]
+    partnership = Partnership.where(project_id: project.id)
+    text = params[:text]
+
+    slack = SlackApi.new
+    slack.post_message current_user, text, partnership
+  end
+
   def message
     hijack do |tubesock|
       tubesock.onopen do
@@ -11,11 +20,6 @@ class ChatController < ApplicationController
         tubesock.send_data "You said: #{data}"
       end
     end
-  end
-
-  def post_message
-    slack = SlackApi.new
-    slack.post_message current_user
   end
 
   # REDIS = Redis.new

@@ -50,7 +50,7 @@ class SlackApi
     SlackApi.post "/chat.postMessage",
       body: {
         token: "#{current_user.slack["credentials"]["token"]}",
-        channel: "G08355R6U",
+        channel: "#{partnership.slack_channel}",
         text: text,
         as_user: true
       }
@@ -64,17 +64,17 @@ class SlackApi
     }
   end
 
+  def screenhero current_user, partnership
+    SlackApi.post "/chat.command",
+      body: {
+        agent: "webapp",
+        command: "/hero",
+        text: "@#{parter_name}",
+        token: propair_owner_token,
+        channel: "#{patnership.slack_channel}"
+      }
+  end
+
   #channel - G08355R6U
   ##{partnership.slack_channel}
-
-  # def screenhero
-  #   Slack.post "/chat.command",
-  #     body: {
-  #       agent: "webapp",
-  #       command: "/hero",
-  #       text: "@james",
-  #       token: propair_owner_token,
-  #       channel: "G08355R6U"
-  #     }
-  # end
 end

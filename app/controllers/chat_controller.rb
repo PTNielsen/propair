@@ -21,6 +21,9 @@ class ChatController < ApplicationController
     slack.chat_history
   end
 
+  def screenhero
+  end
+
   def message
     hijack do |tubesock|
       tubesock.onopen do

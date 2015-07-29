@@ -12,7 +12,7 @@ class SlackApi
     @channel = Slack.post "/groups.create",
       body: {
         token: propair_owner_token,
-        name: "#{@project.title}"
+        name: "#{project.title}"
       }
   end
 

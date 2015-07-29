@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
     project.create_partnership
 
     project.open_chat
-    #Send confirmation to requestor - PartnershipMailer.partnership_confirmation(project, request).deliver_later
+    PartnershipMailer.partnership_confirmation(project, request).deliver_later
     head :ok
   end
 

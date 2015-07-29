@@ -1,6 +1,8 @@
 class ChatController < ApplicationController
   include Tubesock::Hijack
 
+  skip_authorization_check only: [:create]
+
   def create
     project = Project.find params[:project_id]
     partnership = Partnership.where(project_id: project.id)

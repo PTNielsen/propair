@@ -9,7 +9,7 @@ class SlackApi
   base_uri "https://slack.com/api"
 
   def create_group project
-    @channel = Slack.post "/groups.create",
+    @channel = SlackApi.post "/groups.create",
       body: {
         token: propair_owner_token,
         name: "#{project.title}"
@@ -19,7 +19,7 @@ class SlackApi
   end
 
   def bot_message
-    Slack.post "/chat.postMessage",
+    SlackApi.post "/chat.postMessage",
       body: {
         token: propair_owner_token,
         channel: "#{@channel.body.id}",
@@ -31,13 +31,13 @@ class SlackApi
 
   def place_participants user1, user2, project
     create_group project
-    Slack.post "/groups.invite",
+    SlackApi.post "/groups.invite",
       body: {
         token: propair_owner_token,
         channel: "#{@channel.body.id}",
         user: user1.slack["uid"]
       }
-    Slack.post "/groups.invite",
+    SlackApi.post "/groups.invite",
       body: {
         token: propair_owner_token,
         channel: "#{@channel.body.id}",

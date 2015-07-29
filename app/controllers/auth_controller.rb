@@ -11,6 +11,6 @@ class AuthController < Devise::OmniauthCallbacksController
 
     token = user.auth_tokens.create!
     # render :json => {auth_data:auth_data}
-    redirect_to "http://localhost:3000#dashboard/#{token.key}"
+    redirect_to "http://pro-pair.herokuapp.com#dashboard/#{token.key}"
   end
 end

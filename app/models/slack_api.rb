@@ -50,13 +50,11 @@ class SlackApi
     SlackApi.post "/chat.postMessage",
       body: {
         token: "#{current_user.slack["credentials"]["token"]}",
-        channel: "G08355R6U",
+        channel: "#{partnership.slack_channel}",
         text: text,
         as_user: true
       }
   end
-
-  #channel - #{partnership.slack_channel}
 
   # def screenhero
   #   Slack.post "/chat.command",

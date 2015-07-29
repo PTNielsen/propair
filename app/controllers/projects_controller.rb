@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
     
     project.create_request current_user #FIX ME
     PartnershipMailer.partnership_request(project, current_user).deliver_later
-    head :ok
+    render :show
   end
 
   def confirm
@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
 
     project.open_chat
     #Send confirmation to requestor - PartnershipMailer.partnership_confirmation(project, request).deliver_later
-    head :ok
+    render :show
   end
 
 private

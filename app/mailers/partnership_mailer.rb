@@ -5,7 +5,7 @@ class PartnershipMailer < ApplicationMailer
     @project, @current_user = project, current_user
     mail(
       to: @project.author.email,
-      subject: "You have a pair request for #{@project.title}!"
+      subject: "#{@current_user.user_name} would like to pair on #{@project.title}!"
     )
   end
 

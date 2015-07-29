@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  skip_authorization_check only: [:index, :show, :partner_request, :partnership_confirmation]
+  skip_authorization_check only: [:index, :show, :partner_request, :partnership_confirmation, :my_projects, :other_projects]
   
   before_action do
     request.format = :json
@@ -54,6 +54,19 @@ class ProjectsController < ApplicationController
 
     project.delete
     head :ok
+  end
+
+  def my_projects
+    active_projects = Project.where(active: true)
+
+    @user_projects = active_projects.where(author_id: current_user.id)
+  end
+
+  def other_projects
+    active_projects = Project.where(active: true)
+    not_started = active_projects.where(in_progress: false)
+
+    @other_projects = not_started.where.not(author_id: current_user.id)
   end
 
   def partner_request

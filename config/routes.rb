@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   post "/projects/:id/confirm" => "projects#confirm", as: :confirm
 
+  get "/my_projects" => "projects#my_projects", as: :my_projects
+
+  get "/other_projects" => "projects#other_projects", as: :other_projects
+
   # get '/sign_in' => 'pages#login', as: :sign_in
   # devise_scope :user do
   #   delete '/sign_out' => 'devise/sessions#destroy', as: :sign_out

@@ -75,6 +75,4 @@ class SlackApi
       }
   end
 
-  #channel - G08355R6U
-  ##{partnership.slack_channel}
 end

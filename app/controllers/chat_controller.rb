@@ -13,6 +13,11 @@ class ChatController < ApplicationController
     end
   end
 
+  def post_message
+    slack = SlackApi.new
+    slack.post_message current_user
+  end
+
   # REDIS = Redis.new
 
   # def connection

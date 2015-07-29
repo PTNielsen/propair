@@ -27,6 +27,7 @@ gem 'sidekiq'
 gem 'sinatra', require: nil
 gem 'sidetiq'
 gem 'mandrill-api'
+# gem 'slack-mail'
 
 gem 'cancancan', '~> 1.10'
 gem 'devise'

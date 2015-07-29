@@ -31,7 +31,4 @@ class Project < ActiveRecord::Base
       chat.place_participants user1, user2, project
     end
 
-    def message
-    end
-
 end

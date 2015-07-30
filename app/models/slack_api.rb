@@ -3,7 +3,9 @@ require 'pry'
 
 class SlackApi
 
-  propair_owner_token = ENV["propair_owner_token"]
+  def propair_owner_token
+    ENV["propair_owner_token"]
+  end
 
   include HTTParty
   base_uri "https://slack.com/api"
@@ -64,12 +66,13 @@ class SlackApi
     }
   end
 
-  def screenhero current_user, partnership
+  def screenhero current_user, text, partnership
+    text_entry = text.split(" ")[1]
     SlackApi.post "/chat.command",
       body: {
         agent: "webapp",
         command: "/hero",
-        text: "@#{parter_name}",
+        text: text_entry,
         token: propair_owner_token,
         channel: "#{partnership.slack_channel}"
       }

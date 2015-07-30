@@ -1,1 +1,1 @@
-json.array! @history, :"ok", :"messages", :"has_more"
+json.array! @history, :ok, :messages, :has_more

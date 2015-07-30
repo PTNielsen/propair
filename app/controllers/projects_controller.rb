@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
       redirect_to :back
       flash[:notice] = "An error occured creating your project."
     end
+    head :ok
   end
 
   def edit

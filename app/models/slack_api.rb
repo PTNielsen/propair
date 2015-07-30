@@ -55,11 +55,21 @@ class SlackApi
   end
 
   def chat_history partnership
-    SlackApi.get "/groups.history",
+    message_history = SlackApi.get "/groups.history",
     query: {
       token: propair_owner_token,
       channel: "#{partnership.slack_channel}"
     }
+    slack_ids = User.slack_ids_hash
+    messages = message_history["messages"]
+
+    messages.each do |message|
+      slack_ids.each do |slack_id|
+        if message["user"] == slack_id[0]
+          message["user"] = slack_id[1].user_name
+        end
+      end
+    end
   end
 
   def screenhero text, partnership

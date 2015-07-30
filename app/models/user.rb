@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
   has_many :partnerships
   has_many :connections
   has_many :auth_tokens
+
+  def self.slack_ids_hash
+    # Slick way to handle the uncommented below
+    # User.all.each_with_object({}) do |user, hash|
+    #   hash[user.slack["uid"]] = user
+    # end
+
+    slack_ids = {}
+    
+    User.all.each do |user|
+      slack_ids[user.slack["uid"]] = user
+    end
+    slack_ids
+  end
 end

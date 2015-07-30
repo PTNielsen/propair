@@ -60,7 +60,7 @@ class SlackApi
 
   def chat_history partnership
     SlackApi.get "/groups.history",
-    body: {
+    query: {
       token: propair_owner_token,
       channel: "#{partnership.slack_channel}"
     }

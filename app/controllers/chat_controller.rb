@@ -9,7 +9,7 @@ class ChatController < ApplicationController
 
   def create
     project = Project.find params[:project_id]
-    partnership = Partnership.find(project.id)
+    partnership = Partnership.find_by_project_id(project.id)
     text = params[:text]
 
     slack = SlackApi.new
@@ -23,11 +23,11 @@ class ChatController < ApplicationController
 
   def history
     project = Project.find params[:project_id]
-    partnership = Partnership.find(project.id)
+    partnership = Partnership.find_by_project_id(project.id)
 
     slack = SlackApi.new
-    @history = slack.chat_history partnership
-    head :ok
+    history = slack.chat_history partnership
+    render json:history
   end
 
   def message

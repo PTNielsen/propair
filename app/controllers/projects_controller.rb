@@ -37,7 +37,6 @@ class ProjectsController < ApplicationController
     project = current_user.projects.create!(create_project_params)
     authorize! :create, project
     if project.save
-      render :show
       flash[:notice] = "Project was successfully created."
     else
       redirect_to :back
@@ -60,6 +59,7 @@ class ProjectsController < ApplicationController
       render :show
       flash[:notice] = "Project was successfully updated."
     end
+    head :ok
   end
 
   def destroy

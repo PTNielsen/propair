@@ -1,5 +1,5 @@
 class ChatController < ApplicationController
-  include Tubesock::Hijack
+  # include Tubesock::Hijack
 
   skip_authorization_check only: [:create, :history]
 
@@ -13,11 +13,7 @@ class ChatController < ApplicationController
     text = params[:text]
 
     slack = SlackApi.new
-    if text.start_with?("/hero")
-      slack.screenhero current_user, text, partnership
-    else
-      slack.post_message current_user, text, partnership
-    end
+    slack.chat_route
     head :ok
   end
 
@@ -30,17 +26,17 @@ class ChatController < ApplicationController
     render json:history
   end
 
-  def message
-    hijack do |tubesock|
-      tubesock.onopen do
-        tubesock.send_data "Hello, friend"
-      end
+  # def message
+  #   hijack do |tubesock|
+  #     tubesock.onopen do
+  #       tubesock.send_data "Hello, friend"
+  #     end
 
-      tubesock.onmessage do |data|
-        tubesock.send_data "You said: #{data}"
-      end
-    end
-  end
+  #     tubesock.onmessage do |data|
+  #       tubesock.send_data "You said: #{data}"
+  #     end
+  #   end
+  # end
 
   # REDIS = Redis.new
 

@@ -3,10 +3,6 @@ require 'pry'
 
 class SlackApi
 
-  def propair_owner_token
-    ENV["propair_owner_token"]
-  end
-
   include HTTParty
   base_uri "https://slack.com/api"
 
@@ -66,7 +62,7 @@ class SlackApi
     }
   end
 
-  def screenhero current_user, text, partnership
+  def screenhero text, partnership
     text_entry = text.split(" ")[1]
     SlackApi.post "/chat.command",
       body: {
@@ -76,6 +72,20 @@ class SlackApi
         token: propair_owner_token,
         channel: "#{partnership.slack_channel}"
       }
+  end
+
+  def chat_route current_user, text, partnership
+    if text.start_with?("/hero")
+      slack.screenhero text, partnership
+    else
+      slack.post_message current_user, text, partnership
+    end
+  end
+
+  private
+
+  def propair_owner_token
+    ENV["propair_owner_token"]
   end
 
 end

@@ -13,7 +13,11 @@ class ChatController < ApplicationController
     text = params[:text]
 
     slack = SlackApi.new
-    slack.chat_route current_user, text, partnership
+    if text.start_with?("/hero")
+      slack.screenhero text, partnership
+    else
+      slack.post_message current_user, text, partnership
+    end
     head :ok
   end
 

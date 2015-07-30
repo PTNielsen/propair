@@ -74,13 +74,14 @@ class SlackApi
       }
   end
 
-  def chat_route current_user, text, partnership
-    if text.start_with?("/hero")
-      slack.screenhero text, partnership
-    else
-      slack.post_message current_user, text, partnership
-    end
-  end
+  # def chat_route current_user, text, partnership
+  #   slack = SlackApi.new
+  #   if text.start_with?("/hero")
+  #     slack.screenhero text, partnership
+  #   else
+  #     slack.post_message current_user, text, partnership
+  #   end
+  # end
 
   private
 

@@ -13,7 +13,7 @@ class ChatController < ApplicationController
     text = params[:text]
 
     slack = SlackApi.new
-    slack.chat_route
+    slack.chat_route current_user, text, partnership
     head :ok
   end
 

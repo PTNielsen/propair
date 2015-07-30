@@ -23,6 +23,7 @@ class ChatController < ApplicationController
 
     slack = SlackApi.new
     slack.chat_history partnership
+    head :ok
   end
 
   def message

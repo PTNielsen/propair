@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
 private
 
   def create_project_params
-    params.require(:project).permit(:title, :description, :required_skill_1, :required_skill_2, :required_skill_3, :remote, :availability, :deadline, :active, :in_progress)
+    params.require(:project).permit(:title, :description, :required_skill_1, :required_skill_2, :required_skill_3, :remote, :availability, :deadline, :in_progress)
   end
 
   def edit_project_params

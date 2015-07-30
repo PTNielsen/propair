@@ -3,6 +3,10 @@ class ChatController < ApplicationController
 
   skip_authorization_check only: [:create, :history]
 
+  before_action do
+    request.format = :json
+  end
+
   def create
     project = Project.find params[:project_id]
     partnership = Partnership.find(project.id)
@@ -22,8 +26,7 @@ class ChatController < ApplicationController
     partnership = Partnership.find(project.id)
 
     slack = SlackApi.new
-    slack.chat_history partnership
-    head :ok
+    @history = slack.chat_history partnership
   end
 
   def message

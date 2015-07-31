@@ -1,5 +1,3 @@
-require 'pry'
-
 class AuthController < Devise::OmniauthCallbacksController
   def slack
     auth_data = request.env["omniauth.auth"]

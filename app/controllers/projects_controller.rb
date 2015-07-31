@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
     active_projects = Project.where(active: true)
 
     @user_projects = active_projects.where(author_id: current_user.id)
+    @my_partnerships = active_projects.where(partner_id: current_user.id)
   end
 
   def other_projects

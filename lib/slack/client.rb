@@ -6,6 +6,8 @@ module Slack
     RequestFailed = Class.new(StandardError)
     InviteFailed = Class.new(StandardError)
 
+    include HTTParty
+
     def initialize token
       @token = token
     end

@@ -64,10 +64,9 @@ class SlackApi
     messages = message_history["messages"]
 
     messages.each do |message|
-      slack_ids.each do |slack_id|
-        if message["user"] == slack_id[0]
-          message["user"] = slack_id[1].user_name
-        end
+      name = slack_ids[message["user"]]
+      if name
+        message["user"] = name.user_name
       end
     end
   end

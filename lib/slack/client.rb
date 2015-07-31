@@ -25,6 +25,8 @@ module Slack
         http.request(req)
       end
 
+      #SlackApi.post 
+
       raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess)
 
       body = JSON.parse(res.body)

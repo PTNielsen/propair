@@ -25,7 +25,7 @@ module Slack
         http.request(req)
       end
 
-      #SlackApi.post 
+      #SlackApi.post ("/api/users.admin.invite?t=#{Time.now.to_i}")
 
       raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess)
 

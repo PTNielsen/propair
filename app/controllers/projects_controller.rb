@@ -89,6 +89,14 @@ class ProjectsController < ApplicationController
     head :ok
   end
 
+  def close
+    project = Project.find params[:id]
+    authorize! :update, project
+
+    project.update(in_progress: false, active: false)
+    head :ok
+  end
+
 private
 
   def create_project_params

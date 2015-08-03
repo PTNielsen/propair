@@ -17,15 +17,15 @@ class Project < ActiveRecord::Base
 
     if partnership.save
       flash[:notice] = "Partnership created"
-      head :ok
     end
+    head :ok
   end
 
   def open_chat
     partnership = Partnership.find_by_project_id(self.id)
     project = Project.find(self.id)
-    user1 = partnership.author_id
-    user2 = partnership.partner_id
+    user1 = User.find(partnership.author_id)
+    user2 = User.find(partnership.partner_id)
 
     chat = SlackApi.new
     chat.place_participants user1, user2, project

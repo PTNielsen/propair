@@ -11,6 +11,12 @@ class FeedbacksController < ApplicationController
   def create
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   def destroy
     @feedback = Feedback.find params[:id]
     @feedback.delete

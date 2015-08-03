@@ -40,7 +40,6 @@ class ProjectsController < ApplicationController
     if project.save
       flash[:notice] = "Project was successfully created."
     else
-      redirect_to :back
       flash[:notice] = "An error occured creating your project."
     end
     head :ok

@@ -10,7 +10,8 @@ class Ability
       can :read, :all
       can :create, Project
     end
-
+  
     can [:update, :destroy], Project, author_id: user.id
+    can :update, User, id: user.id
   end
 end

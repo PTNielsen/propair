@@ -146,7 +146,7 @@ class ProjectsControllerTest < ActionController::TestCase
     request.env["HTTP_REFERER"] = "/"
 
     delete :destroy, id: project.id
-    binding.pry
+
     assert_equal 1, Project.count
     assert_equal 302, response.status
     assert_equal "/", response.redirect_url

@@ -57,7 +57,6 @@ class ProjectsController < ApplicationController
 
     project.update(edit_project_params)
     if project.save
-      render :show
       flash[:notice] = "Project was successfully updated."
     end
     head :ok

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   patch "projects/:id/close" => "projects#close", as: :close
 
+  post "/users/invite" => "users#invite", as: :invite
+
   # get '/sign_in' => 'pages#login', as: :sign_in
   # devise_scope :user do
   #   delete '/sign_out' => 'devise/sessions#destroy', as: :sign_out

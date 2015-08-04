@@ -16,15 +16,15 @@ class ProjectsController < ApplicationController
   end
 
   def my_projects
-    active_projects = Project.where(active: true)
+    active_projects  = Project.where(active: true)
 
-    @user_projects = active_projects.where(author_id: current_user.id)
+    @user_projects   = active_projects.where(author_id: current_user.id)
     @my_partnerships = active_projects.where(partner_id: current_user.id)
   end
 
   def other_projects
     active_projects = Project.where(active: true)
-    not_started = active_projects.where(in_progress: false)
+    not_started     = active_projects.where(in_progress: false)
 
     @other_projects = not_started.where.not(author_id: current_user.id)
   end

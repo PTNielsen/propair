@@ -1,3 +1,5 @@
+# Not needed since we're sending invite emails async.
+
 # class InvitationWorker
 #   include Sidekiq::Worker
 

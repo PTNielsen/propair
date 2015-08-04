@@ -4,15 +4,17 @@ class FeedbacksController < ApplicationController
     request.format = :json
   end
 
+  # Nice to have.  Incomplete.
+
   def new
     @feedback = Feedback.new
     authorize! :create, feedback
   end
 
   def create
-    project = Project.find params[:id]
+    project     = Project.find params[:id]
     partnership = Partnership.find_by_project_id(project.id)
-    feedback = current_user.feedbacks.create!(create_feedback_params)
+    feedback    = current_user.feedbacks.create!(create_feedback_params)
     authorize! :create, feedback
 
     if feedback.save

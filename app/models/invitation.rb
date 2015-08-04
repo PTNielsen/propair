@@ -7,9 +7,9 @@ class Invitation
   attribute :email, String
   validates :email, presence: true
 
-  def enqueue
-    InvitationWorker.perform_async(attributes)
-  end
+  # def enqueue
+  #   InvitationWorker.perform_async(attributes)
+  # end
 
   def perform
     slack_client.invite email: email

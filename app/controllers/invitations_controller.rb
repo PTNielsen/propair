@@ -1,3 +1,5 @@
+# POTENTIAL CUT
+
 class InvitationsController < ApplicationController
 
   def create

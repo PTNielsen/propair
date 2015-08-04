@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def invite
     a = Invitation.new email: params[:email]
-    # Could use InvitationMailer and '.deliver_later'
+    # Could use InvitationMailer and '.deliver_later' but not necessary
     a.perform
     head :ok
   end

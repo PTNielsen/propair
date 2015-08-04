@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 
   def create_partnership
     request_data = Request.where(project_id: self.id)
-    partnership = Partnership.create!(author_id: self.author_id, partner_id: request_data.requestor_id, project_id: self.id)
+    partnership  = Partnership.create!(author_id: self.author_id, partner_id: request_data.requestor_id, project_id: self.id)
     self.update(in_progress: true)
 
     if partnership.save
@@ -23,11 +23,11 @@ class Project < ActiveRecord::Base
 
   def open_chat
     partnership = Partnership.find_by_project_id(self.id)
-    project = Project.find(self.id)
-    user1 = User.find(partnership.author_id)
-    user2 = User.find(partnership.partner_id)
+    project     = Project.find(self.id)
+    user1       = User.find(partnership.author_id)
+    user2       = User.find(partnership.partner_id)
 
-    chat = SlackApi.new
+    chat        = SlackApi.new
     chat.place_participants user1, user2, project
   end
 

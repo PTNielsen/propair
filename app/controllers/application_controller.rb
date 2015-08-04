@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
     redirect_to :back, notice: "You are not authorized to see this page"
   end
 
-  # rescue_from GH::NotAuthorized do |e|  ** If we have time **
+  # ** If we have time **
+  # rescue_from Slack::NotAuthorized do |e|
   #   session[:_after_slack_auth_redirect_path] = request.path
   #   redirect_to user_omniauth_authorize_path(:slack)
   # end

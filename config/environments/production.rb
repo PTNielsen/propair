@@ -77,12 +77,15 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Would need if using Sidekiq
+  # config.active_job.queue_adapter = :sidekiq
+
   ActionMailer::Base.smtp_settings = {
-      :port =>           '587',
-      :address =>        'smtp.mandrillapp.com',
-      :user_name =>      ENV['MANDRILL_USERNAME'],
-      :password =>       ENV['MANDRILL_APIKEY'],
-      :domain =>         'heroku.com',
+      :port           => '587',
+      :address        => 'smtp.mandrillapp.com',
+      :user_name      => ENV['MANDRILL_USERNAME'],
+      :password       => ENV['MANDRILL_APIKEY'],
+      :domain         => 'heroku.com',
       :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp

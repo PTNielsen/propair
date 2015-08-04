@@ -13,7 +13,7 @@ class PartnershipMailer < ApplicationMailer
     @project, @request = project, request
     mail(
       to: @request.requestor.email,
-      subject: "ProPair Request Accepted - #{@project.title}"
+      subject: "#{@request.author_id} has accepted your pair request - #{@project.title}"
     )
   end
 end

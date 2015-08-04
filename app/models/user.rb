@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:slack]
 
-  validates :email, presence: true, uniquness: true
+  validates :email, presence: true, uniqueness: true
   
   has_many :projects, class_name: "Project", foreign_key: :author_id
   has_many :feedbacks, class_name: "Feedback", foreign_key: :author_id

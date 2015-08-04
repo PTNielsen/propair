@@ -6,8 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-config.action_mailer.default_url_options = { host: 'pro-pair.herokuapp.com' }
-
 module Propair
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -23,6 +21,8 @@ module Propair
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+
+    config.action_mailer.default_url_options = { host: 'pro-pair.herokuapp.com' }
 
     config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do

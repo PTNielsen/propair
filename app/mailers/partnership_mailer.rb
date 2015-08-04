@@ -9,11 +9,11 @@ class PartnershipMailer < ApplicationMailer
     )
   end
 
-  def partnership_confirmed project, request
+  def partnership_confirmation project, request
     @project, @request = project, request
     mail(
       to: @request.requestor.email,
-      subject: "#{@request.author_id} has accepted your pair request - #{@project.title}"
+      subject: "ProPair Notification - #{@project.title} pair request accepted!"
     )
   end
 end

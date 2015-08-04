@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   post "/projects/request/:project_id" => "projects#partner_request", as: :partner_request
 
-  post "/projects/:id/confirm" => "projects#confirm", as: :confirm
+  post "/confirm" => "projects#confirm", as: :confirm
 
   patch "projects/:id/close" => "projects#close", as: :close
 

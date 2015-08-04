@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     head :ok
   end
 
-private
+  private
 
   def edit_user_params
     params.require(:user).permit(:first_name, :last_name, :about_me, :city, :timezone, :skill_1, :skill_2, :skill_3, :skill_4, :skill_5, :github_link, :avatar)

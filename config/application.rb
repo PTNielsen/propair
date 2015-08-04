@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.action_mailer.default_url_options = { host: 'pro-pair.herokuapp.com' }
+
 module Propair
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

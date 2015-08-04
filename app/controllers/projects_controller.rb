@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
-  # skip_authorization_check only: [:index, :show, :partner_request, :confirm, :my_projects, :other_projects]
+  skip_authorization_check only: [:index, :show, :partner_request, :confirm, :my_projects, :other_projects]
   
   before_action do
     request.format = :json

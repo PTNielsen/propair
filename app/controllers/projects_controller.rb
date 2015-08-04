@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  # skip_before_action :authenticate_user!, only: [:index, :show]
 
-  skip_authorization_check only: [:index, :show, :partner_request, :partnership_confirmation, :my_projects, :other_projects]
+  # skip_authorization_check only: [:index, :show, :partner_request, :confirm, :my_projects, :other_projects]
   
   before_action do
     request.format = :json
@@ -86,7 +86,7 @@ class ProjectsController < ApplicationController
 
     project.open_chat
     PartnershipMailer.partnership_confirmation(project, request).deliver_later
-    head :ok
+    render :show
   end
 
   def close

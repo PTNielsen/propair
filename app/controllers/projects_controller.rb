@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
   def confirm
     project = Project.find params[:id]
     request = Request.where(project_id: project.id).last
-    project.update!(partner_id: request.requestor_id)
+    project.update!(partner_id: request.requestor_id, in_progress: true)
 
     project.create_partnership
 

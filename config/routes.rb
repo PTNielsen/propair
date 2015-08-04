@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'auth'}
 
   resources :users
-  resources :projects do
-    resources :feedback
-    resources :chat
+  resources :projects, only: [:show, :create, :update, :destroy] do
+    resources :feedback, only: [:show, :create, :update, :destroy]
   end
 
   resource :dashboard, only: [:show]

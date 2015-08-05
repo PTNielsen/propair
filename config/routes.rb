@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   patch "projects/:id/close" => "projects#close", as: :close
 
+  post "/projects/:project_id/chat" => "chat#create", as: :create
+
   # User Routes
 
   post "/users/invite" => "users#invite", as: :invite

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post "/projects/:project_id/chat" => "chat#create", as: :create
 
+  delete "/my_projects/:project_id" => "projects#destroy", as: :destroy
+
   # User Routes
 
   post "/users/invite" => "users#invite", as: :invite

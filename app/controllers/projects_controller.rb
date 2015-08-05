@@ -13,7 +13,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
-    # @requests = Request.where(project_id: @project.id)
+    if @project.author == current_user
+      @requests = Request.where(project_id: @project.id)
+    end
   end
 
   def my_projects
@@ -63,7 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    project = Project.find params[:id]
+    project = Project.find params[:project_id]
     authorize! :destroy, project
 
     project.delete

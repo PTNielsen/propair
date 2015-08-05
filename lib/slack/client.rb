@@ -1,4 +1,3 @@
-require 'net/http'
 require 'httparty'
 
 module Slack
@@ -13,28 +12,35 @@ module Slack
     end
 
     def invite(email:, channels: [])
-      res = Net::HTTP.start("propair.slack.com", 443, use_ssl: true) do |http|
-        req = Net::HTTP::Post.new("/api/users.admin.invite?t=#{Time.now.to_i}")
-        req.set_form_data \
+      SlackApi.post "/users.admin.invite?t=#{Time.now.to_i}",
+        body: {
           email:       email,
           channels:    channels.join(","),
           token:       @token,
           set_active:  "true",
           _attempts:   1
+        }
 
-        http.request(req)
-      end
+      # raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess) #unless status/code == 200
 
-      #SlackApi.post ("/api/users.admin.invite?t=#{Time.now.to_i}")
+      raise RequestFailed.new("HTTP status code: #{response.status}") unless response.status == 200
 
-      raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess)
-
-      body = JSON.parse(res.body)
+      body = JSON.parse(response.body)
       if !(body["ok"] || %w(already_in_team already_invited sent_recently).include?(body["error"]))
         raise InviteFailed.new(body.to_s)
       end
-
       true
     end
   end
 end
+
+# res = Net::HTTP.start("propair.slack.com", 443, use_ssl: true) do |http|
+#   req = Net::HTTP::Post.new("/api/users.admin.invite?t=#{Time.now.to_i}")
+#   req.set_form_data \
+#     email:       email,
+#     channels:    channels.join(","),
+#     token:       @token,
+#     set_active:  "true",
+#     _attempts:   1
+
+#   http.request(req)

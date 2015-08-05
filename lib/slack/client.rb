@@ -12,7 +12,7 @@ module Slack
     end
 
     def invite(email:, channels: [])
-      SlackApi.post "/users.admin.invite?t=#{Time.now.to_i}",
+      response = SlackApi.post "/users.admin.invite?t=#{Time.now.to_i}",
         body: {
           email:       email,
           channels:    channels.join(","),

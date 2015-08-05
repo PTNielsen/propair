@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: "dashboards#show"
 
-  # Project Routes
+  # Project Routes 
 
   get "/my_projects" => "projects#my_projects", as: :my_projects
 

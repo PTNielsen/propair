@@ -13,6 +13,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
+
+    # Below code for if we'd like to try and show pair requests on project show page.
     # if @project.author == current_user
     #   @requests = Request.where(project_id: @project.id)
     # end

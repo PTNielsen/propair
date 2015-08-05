@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  skip_authorization_check only: [:index, :show, :destroy, :partner_request, :confirm, :my_projects, :other_projects]
+  skip_authorization_check only: [:index, :show, :partner_request, :confirm, :my_projects, :other_projects]
   
   before_action do
     request.format = :json
@@ -13,9 +13,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
-    if @project.author == current_user
-      @requests = Request.where(project_id: @project.id)
-    end
+    # if @project.author == current_user
+    #   @requests = Request.where(project_id: @project.id)
+    # end
   end
 
   def my_projects

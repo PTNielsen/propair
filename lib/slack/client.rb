@@ -21,8 +21,6 @@ module Slack
           _attempts:   1
         }
 
-      # raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess) #unless status/code == 200
-
       raise RequestFailed.new("HTTP status code: #{response.code}") unless response.code == 200
 
       body = JSON.parse(response.body)
@@ -33,14 +31,3 @@ module Slack
     end
   end
 end
-
-# res = Net::HTTP.start("propair.slack.com", 443, use_ssl: true) do |http|
-#   req = Net::HTTP::Post.new("/api/users.admin.invite?t=#{Time.now.to_i}")
-#   req.set_form_data \
-#     email:       email,
-#     channels:    channels.join(","),
-#     token:       @token,
-#     set_active:  "true",
-#     _attempts:   1
-
-#   http.request(req)

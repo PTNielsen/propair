@@ -23,7 +23,7 @@ module Slack
 
       # raise RequestFailed.new("HTTP status code: #{res.to_i}") unless res.is_a?(Net::HTTPSuccess) #unless status/code == 200
 
-      raise RequestFailed.new("HTTP status code: #{response.status}") unless response.status == 200
+      raise RequestFailed.new("HTTP status code: #{response.code}") unless response.code == 200
 
       body = JSON.parse(response.body)
       if !(body["ok"] || %w(already_in_team already_invited sent_recently).include?(body["error"]))

@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
-    @requests = Request.where(project_id: @project.id)
+    # @requests = Request.where(project_id: @project.id)
   end
 
   def my_projects

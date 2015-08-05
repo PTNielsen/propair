@@ -16,6 +16,13 @@ class ProjectsController < ApplicationController
     # if @project.author == current_user
     #   @requests = Request.where(project_id: @project.id)
     # end
+
+    # in JBuilder
+    # if @project.author_id == current_user.id
+    #   @requests.each do |request|
+    #     json.(@request, :id, :requestor_id, :project_id, :author_id)
+    #   end
+    # end
   end
 
   def my_projects

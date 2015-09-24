@@ -1,28 +1,15 @@
-== README
+= ProPair - The Iron Yard DC Final Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+** IN DEVELOPMENT **
 
-Things you may want to cover:
+This is the back-end portion of a group project done in collaboration with Ghaea Tam (github: ghaea, https://github.com/ghaea/ProPair) from the Front-End Engineering course for our final project.  ProPair is a hub for developers to post projects, interact with other users, and pair program remotely.  We were able to accomplish this by using Slack's API and their Screenhero integration.
 
-* Ruby version
+This project has been pushed to heroku (pro-pair.herokuapp.com) though not complete.
 
-* System dependencies
+Potential Features to Implement:
 
-* Configuration
+* Create a more social aspect such as adding friends/connections
 
-* Database creation
+* Allow users to search for projects by timezone of the author and language required
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Create a work-around while Screenhero's new signups are closed
